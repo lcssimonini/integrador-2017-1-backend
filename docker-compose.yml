@@ -1,0 +1,12 @@
+version: '2'
+services:
+  postgres:
+    image: postgres:9.4
+    ports:
+    - "5434:5432"
+    volumes:
+      - ./database:/var/lib/postgresql/data
+    environment:
+      - POSTGRES_DB=integrador
+      - POSTGRES_USER=integrador
+      - POSTGRES_PASSWORD=integrador
