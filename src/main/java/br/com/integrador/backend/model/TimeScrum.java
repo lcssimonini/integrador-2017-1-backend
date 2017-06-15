@@ -1,7 +1,11 @@
 package br.com.integrador.backend.model;
 
+import br.com.integrador.backend.model.persistence.PersistableEntity;
+import lombok.Data;
+
 /**
  * Created by simonini on 14/06/17.
  */
-public class TimeScrum {
+@Data
+public class TimeScrum extends PersistableEntity {
 }
