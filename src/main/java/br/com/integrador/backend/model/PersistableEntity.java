@@ -1,4 +1,4 @@
-package br.com.integrador.backend.model.persistence;
+package br.com.integrador.backend.model;
 
 import lombok.Data;
 

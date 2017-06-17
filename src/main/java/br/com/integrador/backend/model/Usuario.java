@@ -1,6 +1,5 @@
 package br.com.integrador.backend.model;
 
-import br.com.integrador.backend.model.persistence.PersistableEntity;
 import lombok.Data;
 import org.hibernate.validator.constraints.NotEmpty;
 

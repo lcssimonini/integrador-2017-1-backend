@@ -1,7 +1,8 @@
 package br.com.integrador.backend.model;
 
-import br.com.integrador.backend.model.persistence.PersistableEntity;
+import br.com.integrador.backend.model.enumerated.Cargo;
 import lombok.Data;
+import org.hibernate.validator.constraints.NotEmpty;
 
 import javax.persistence.*;
 
@@ -12,7 +13,10 @@ import javax.persistence.*;
 @Entity
 public class Funcionario extends PersistableEntity {
 
+    @NotEmpty(message = "Funcionário precisa ter um cargo")
+    @Enumerated(EnumType.STRING)
     private Cargo cargo;
 
+    @NotEmpty(message = "Funcionário precisa pertencer a um time")
     private TimeScrum time;
 }
