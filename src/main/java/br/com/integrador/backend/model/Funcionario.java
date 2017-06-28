@@ -17,6 +17,7 @@ public class Funcionario extends PersistableEntity {
     @Enumerated(EnumType.STRING)
     private Cargo cargo;
 
+    @ManyToOne
     @NotEmpty(message = "Funcionário precisa pertencer a um time")
     private TimeScrum time;
 }
