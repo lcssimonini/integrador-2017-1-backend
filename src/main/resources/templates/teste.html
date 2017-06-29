@@ -1,0 +1,38 @@
+<html>
+<head>
+	<link rel="stylesheet" href="css/bootstrap.min.css" />
+  <link rel="stylesheet" href="css/Navigation-with-Button1.css" />
+  <link rel="stylesheet" href="css/styles.css" />
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.0/jquery.min.js"></script>
+  <script src="js/bootstrap.min.js"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/2.6.0/Chart.bundle.js"></script>
+  <script src="js/scripts.js"></script>
+<script type="text/javascript">
+$(function () {
+$('[data-toggle="popover"]').popover()
+})
+</script>
+</head>
+<body>
+	<form>
+		<input type="button" onclick="toogle_disabled( false )" value="Habilitar" />
+		<input type="button" onclick="toogle_disabled( true )" value="Desabilitar" />
+
+		<br /><br />
+		Nome: <input type="text" name="nome" />
+		Local: <input type="text" name="local" />
+		<br>
+		Nome: <input type="text" name="nome2" />
+		Local: <input type="text" name="local2" />
+	</form>
+	<div class="container">
+	  <a href="#" data-toggle="popover" title="Criar" data-content="tarefas"><img src="img/plus.svg"/ width="40px" height="40px"></a>
+	</div>
+
+	<script>
+	$(document).ready(function(){
+	    $('[data-toggle="popover"]').popover();
+	});
+	</script></body>
+</html>

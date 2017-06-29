@@ -18,5 +18,6 @@ public class Usuario  extends PersistableEntity  {
     @NotEmpty(message = "Senha não pode ser vazia")
     private String senha;
 
+    @OneToOne
     private Funcionario funcionario;
 }
