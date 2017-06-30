@@ -21,20 +21,22 @@ public abstract class PersistableEntity {
     @Column(columnDefinition = "serial")
     private Long id;
 
-    private Timestamp createdAt;
+    @Temporal(TemporalType.TIMESTAMP)
+    private Date createdAt;
 
-    private Timestamp updatedAt;
+    @Temporal(TemporalType.TIMESTAMP)
+    private Date updatedAt;
 
-    private List<EntityError> errorList;
+    private transient List<EntityError> errorList;
 
     @PrePersist
     private void onCreate() {
-        this.createdAt = new Timestamp(new Date().getTime());
+        this.createdAt = new Date();
     }
 
     @PreUpdate
     private void onUpdate() {
-        this.updatedAt = new Timestamp(new Date().getTime());
+        this.updatedAt = new Date();
     }
 
     public void addError(String message) {
