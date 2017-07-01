@@ -52,21 +52,6 @@ public abstract class PersistableEntity {
         this.id = id;
     }
 
-    @Override
-    public boolean equals(Object o) {
-        if (this == o) return true;
-        if (!(o instanceof PersistableEntity)) return false;
-
-        PersistableEntity that = (PersistableEntity) o;
-
-        return getId().equals(that.getId());
-    }
-
-    @Override
-    public int hashCode() {
-        return getId().hashCode();
-    }
-
     private static class EntityError {
 
         private String message;

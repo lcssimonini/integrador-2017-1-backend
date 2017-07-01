@@ -2,6 +2,9 @@ package br.com.integrador.backend.model;
 
 import br.com.integrador.backend.model.enumerated.Cargo;
 import lombok.Data;
+import org.apache.commons.lang.builder.EqualsBuilder;
+import org.apache.commons.lang.builder.HashCodeBuilder;
+import org.apache.commons.lang.builder.ToStringBuilder;
 import org.hibernate.validator.constraints.NotEmpty;
 
 import javax.persistence.Entity;
@@ -29,5 +32,35 @@ public class Funcionario extends PersistableEntity {
 
     public void setCargo(Cargo cargo) {
         this.cargo = cargo;
+    }
+
+    @Override
+    public boolean equals(Object o) {
+        if (this == o) return true;
+
+        if (!(o instanceof Funcionario)) return false;
+
+        Funcionario that = (Funcionario) o;
+
+        return new EqualsBuilder()
+                .append(getCargo(), that.getCargo())
+                .append(time, that.time)
+                .isEquals();
+    }
+
+    @Override
+    public int hashCode() {
+        return new HashCodeBuilder(17, 37)
+                .append(getCargo())
+                .append(time)
+                .toHashCode();
+    }
+
+    @Override
+    public String toString() {
+        return new ToStringBuilder(this)
+                .append("cargo", cargo)
+                .append("time", time)
+                .toString();
     }
 }
