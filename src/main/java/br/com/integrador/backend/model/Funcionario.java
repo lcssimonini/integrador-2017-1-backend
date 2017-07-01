@@ -4,12 +4,14 @@ import br.com.integrador.backend.model.enumerated.Cargo;
 import lombok.Data;
 import org.hibernate.validator.constraints.NotEmpty;
 
-import javax.persistence.*;
+import javax.persistence.Entity;
+import javax.persistence.EnumType;
+import javax.persistence.Enumerated;
+import javax.persistence.ManyToOne;
 
 /**
  * Created by simonini on 14/06/17.
  */
-@Data
 @Entity
 public class Funcionario extends PersistableEntity {
 
@@ -20,4 +22,12 @@ public class Funcionario extends PersistableEntity {
     @ManyToOne
     @NotEmpty(message = "Funcionário precisa pertencer a um time")
     private TimeScrum time;
+
+    public Cargo getCargo() {
+        return cargo;
+    }
+
+    public void setCargo(Cargo cargo) {
+        this.cargo = cargo;
+    }
 }

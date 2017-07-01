@@ -14,4 +14,12 @@ public class TimeScrum extends PersistableEntity {
 
     @NotEmpty(message = "Time precisa ter um nome")
     private String nome;
+
+    public String getNome() {
+        return nome;
+    }
+
+    public void setNome(String nome) {
+        this.nome = nome;
+    }
 }

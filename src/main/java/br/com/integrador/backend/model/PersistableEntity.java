@@ -1,17 +1,14 @@
 package br.com.integrador.backend.model;
 
-import lombok.Data;
 import org.apache.commons.lang.StringUtils;
 
 import javax.persistence.*;
-import java.sql.Timestamp;
 import java.util.Date;
 import java.util.List;
 
 /**
  * Created by simonini on 14/06/17.
  */
-@Data
 @Entity
 @Inheritance(strategy = InheritanceType.TABLE_PER_CLASS)
 public abstract class PersistableEntity {
@@ -45,6 +42,29 @@ public abstract class PersistableEntity {
 
     public boolean hasError() {
         return !this.errorList.isEmpty();
+    }
+
+    public Long getId() {
+        return id;
+    }
+
+    public void setId(Long id) {
+        this.id = id;
+    }
+
+    @Override
+    public boolean equals(Object o) {
+        if (this == o) return true;
+        if (!(o instanceof PersistableEntity)) return false;
+
+        PersistableEntity that = (PersistableEntity) o;
+
+        return getId().equals(that.getId());
+    }
+
+    @Override
+    public int hashCode() {
+        return getId().hashCode();
     }
 
     private static class EntityError {

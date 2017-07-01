@@ -15,4 +15,12 @@ public class Projeto extends PersistableEntity {
 
     @NotEmpty(message = "Projeto precisa ter um nome")
     private String nome;
+
+    public String getNome() {
+        return nome;
+    }
+
+    public void setNome(String nome) {
+        this.nome = nome;
+    }
 }

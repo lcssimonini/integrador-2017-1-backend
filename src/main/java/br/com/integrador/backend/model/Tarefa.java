@@ -27,4 +27,12 @@ public class Tarefa extends PersistableEntity {
 
     @Enumerated(EnumType.STRING)
     private StatusTarefa statusTarefa;
+
+    public String getNome() {
+        return nome;
+    }
+
+    public void setNome(String nome) {
+        this.nome = nome;
+    }
 }
