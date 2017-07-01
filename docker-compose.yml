@@ -1,14 +1,12 @@
 version: '2'
 services:
-  mysql:
-    image: mysql:5.7
-    volumes:
-      - ./db_data:/var/lib/mysql
+  postgres:
+    image: postgres:9.4
     ports:
-      - "3309:3306"
-    restart: always
+    - "5434:5432"
+    volumes:
+      - ./database:/var/lib/postgresql/data
     environment:
-      MYSQL_ROOT_PASSWORD: integrador
-      MYSQL_DATABASE: integrador
-      MYSQL_USER: root
-      MYSQL_PASSWORD: integrador
+      - POSTGRES_DB=integrador
+      - POSTGRES_USER=integrador
+      - POSTGRES_PASSWORD=integrador
