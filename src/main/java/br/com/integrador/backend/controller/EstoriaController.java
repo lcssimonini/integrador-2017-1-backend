@@ -1,6 +1,7 @@
 package br.com.integrador.backend.controller;
 
 import br.com.integrador.backend.model.Estoria;
+import br.com.integrador.backend.service.AbstractService;
 import br.com.integrador.backend.service.EstoriaService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.ResponseEntity;
@@ -15,24 +16,12 @@ import org.springframework.web.bind.annotation.RestController;
  */
 @RestController
 @RequestMapping("/estorias")
-public class EstoriaController {
+public class EstoriaController extends AbstractController<Estoria>{
 
     @Autowired
     private EstoriaService service;
 
-//    @RequestMapping(method = RequestMethod.POST)
-//    public ResponseEntity<Estoria> save(@Validated Estoria estoria, Errors errors) {
-//        Estoria saved = service.save(estoria, errors);
-//
-//        HttpStatus status = null;
-//
-//        if (saved.hasErrors()) {
-//            status = HttpStatus.CONFLICT;
-//        } else {
-//            status = HttpStatus.CREATED;
-//        }
-//
-//        ResponseEntity<PointOfInterest> responseEntity = new ResponseEntity<PointOfInterest>(saved, status);
-//        return responseEntity;
-//    }
+    public EstoriaController(EstoriaService service) {
+        super(service);
+    }
 }

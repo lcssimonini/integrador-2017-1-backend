@@ -4,6 +4,8 @@ import br.com.integrador.backend.model.PersistableEntity;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.data.jpa.repository.JpaRepository;
 import org.springframework.stereotype.Component;
+import org.springframework.validation.Errors;
+import org.springframework.validation.ObjectError;
 
 import java.util.List;
 
@@ -28,7 +30,18 @@ public abstract class AbstractService<T extends PersistableEntity> {
         return repository.findOne(id);
     }
 
-    public T saveOrUpdate(T entity){
+    public T saveOrUpdate(T entity, Errors errors) {
+        if(entity == null) {
+            throw new IllegalArgumentException("Não foi passado um objeto para ser salvo");
+        }
+
+        if (errors.hasErrors()) {
+            for (ObjectError error : errors.getAllErrors()) {
+                entity.addError(error.getDefaultMessage());
+            }
+            return entity;
+        }
+
         return repository.save(entity);
     }
 
