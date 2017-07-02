@@ -1,7 +1,6 @@
 package br.com.integrador.backend.model;
 
 import br.com.integrador.backend.model.enumerated.Cargo;
-import lombok.Data;
 import org.apache.commons.lang.builder.EqualsBuilder;
 import org.apache.commons.lang.builder.HashCodeBuilder;
 import org.apache.commons.lang.builder.ToStringBuilder;
@@ -17,6 +16,8 @@ import javax.persistence.ManyToOne;
  */
 @Entity
 public class Funcionario extends PersistableEntity {
+
+    private static final long serialVersionUID = -543745288973303221L;
 
     @NotEmpty(message = "Funcionário precisa ter um cargo")
     @Enumerated(EnumType.STRING)

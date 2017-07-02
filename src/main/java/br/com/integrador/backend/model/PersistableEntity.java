@@ -3,6 +3,7 @@ package br.com.integrador.backend.model;
 import org.apache.commons.lang.StringUtils;
 
 import javax.persistence.*;
+import java.io.Serializable;
 import java.util.Date;
 import java.util.List;
 
@@ -11,7 +12,7 @@ import java.util.List;
  */
 @Entity
 @Inheritance(strategy = InheritanceType.TABLE_PER_CLASS)
-public abstract class PersistableEntity {
+public abstract class PersistableEntity implements Serializable {
 
     @Id
     @GeneratedValue(strategy = GenerationType.TABLE)

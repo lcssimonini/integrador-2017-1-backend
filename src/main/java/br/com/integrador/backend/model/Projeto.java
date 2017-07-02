@@ -16,6 +16,8 @@ import javax.persistence.Entity;
 @Entity
 public class Projeto extends PersistableEntity {
 
+    private static final long serialVersionUID = -9081849604597137756L;
+
     @NotEmpty(message = "Projeto precisa ter um nome")
     private String nome;
 

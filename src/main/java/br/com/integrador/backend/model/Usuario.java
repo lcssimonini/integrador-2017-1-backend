@@ -16,6 +16,8 @@ import javax.persistence.OneToOne;
 @Entity
 public class Usuario  extends PersistableEntity  {
 
+    private static final long serialVersionUID = 639512744700722605L;
+
     @NotEmpty(message = "Login não pode ser vazio")
     private String login;
 

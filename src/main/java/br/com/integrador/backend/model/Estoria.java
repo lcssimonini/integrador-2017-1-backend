@@ -6,6 +6,7 @@ import org.apache.commons.lang.builder.ToStringBuilder;
 import org.hibernate.validator.constraints.NotEmpty;
 
 import javax.persistence.Entity;
+import javax.persistence.JoinColumn;
 import javax.persistence.ManyToOne;
 
 /**
@@ -14,10 +15,13 @@ import javax.persistence.ManyToOne;
 @Entity
 public class Estoria extends PersistableEntity {
 
-    @NotEmpty(message = "Funcionário precisa ter um cargo")
+    private static final long serialVersionUID = -4304297196981863136L;
+
+    @NotEmpty(message = "Estória precisa ter um nome")
     private String nome;
 
-    @ManyToOne
+    @ManyToOne(optional = false)
+    @JoinColumn(name="projeto_id")
     private Projeto projeto;
 
     public String getNome() {

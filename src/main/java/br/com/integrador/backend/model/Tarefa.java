@@ -19,6 +19,8 @@ import javax.persistence.ManyToOne;
 @Entity
 public class Tarefa extends PersistableEntity {
 
+    private static final long serialVersionUID = 1860581446842413481L;
+
     @NotEmpty(message = "Tarefa precisa ter um nome")
     private String nome;
 

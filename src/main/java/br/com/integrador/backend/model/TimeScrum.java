@@ -15,6 +15,8 @@ import javax.persistence.Entity;
 @Entity
 public class TimeScrum extends PersistableEntity {
 
+    private static final long serialVersionUID = -4212492445007746718L;
+
     @NotEmpty(message = "Time precisa ter um nome")
     private String nome;
 

@@ -13,9 +13,9 @@ import org.springframework.web.bind.annotation.RestController;
 @RequestMapping("/estorias")
 public class EstoriaController extends AbstractController<Estoria>{
 
-    @Autowired
     private EstoriaService service;
 
+    @Autowired
     public EstoriaController(EstoriaService service) {
         super(service);
     }
