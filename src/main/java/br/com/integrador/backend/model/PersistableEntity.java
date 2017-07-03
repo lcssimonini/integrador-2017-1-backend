@@ -1,6 +1,8 @@
 package br.com.integrador.backend.model;
 
 import org.apache.commons.lang.StringUtils;
+import org.apache.commons.lang.builder.EqualsBuilder;
+import org.apache.commons.lang.builder.HashCodeBuilder;
 
 import javax.persistence.*;
 import java.io.Serializable;
@@ -67,5 +69,25 @@ public abstract class PersistableEntity implements Serializable {
             error.message = message;
             return error;
         }
+    }
+
+    @Override
+    public boolean equals(Object o) {
+        if (this == o) return true;
+
+        if (!(o instanceof PersistableEntity)) return false;
+
+        PersistableEntity that = (PersistableEntity) o;
+
+        return new EqualsBuilder()
+                .append(getId(), that.getId())
+                .isEquals();
+    }
+
+    @Override
+    public int hashCode() {
+        return new HashCodeBuilder(17, 37)
+                .append(getId())
+                .toHashCode();
     }
 }

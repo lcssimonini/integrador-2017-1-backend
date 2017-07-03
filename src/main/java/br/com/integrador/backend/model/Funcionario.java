@@ -35,6 +35,14 @@ public class Funcionario extends PersistableEntity {
         this.cargo = cargo;
     }
 
+    public TimeScrum getTime() {
+        return time;
+    }
+
+    public void setTime(TimeScrum time) {
+        this.time = time;
+    }
+
     @Override
     public boolean equals(Object o) {
         if (this == o) return true;

@@ -1,6 +1,5 @@
 package br.com.integrador.backend.model;
 
-import lombok.Data;
 import org.apache.commons.lang.builder.EqualsBuilder;
 import org.apache.commons.lang.builder.HashCodeBuilder;
 import org.apache.commons.lang.builder.ToStringBuilder;
@@ -12,7 +11,6 @@ import javax.persistence.OneToOne;
 /**
  * Created by simonini on 14/06/17.
  */
-@Data
 @Entity
 public class Usuario  extends PersistableEntity  {
 
@@ -33,6 +31,22 @@ public class Usuario  extends PersistableEntity  {
 
     public void setLogin(String login) {
         this.login = login;
+    }
+
+    public String getSenha() {
+        return senha;
+    }
+
+    public void setSenha(String senha) {
+        this.senha = senha;
+    }
+
+    public Funcionario getFuncionario() {
+        return funcionario;
+    }
+
+    public void setFuncionario(Funcionario funcionario) {
+        this.funcionario = funcionario;
     }
 
     @Override

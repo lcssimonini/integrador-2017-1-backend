@@ -1,21 +1,16 @@
 package br.com.integrador.backend.model;
 
 import br.com.integrador.backend.model.enumerated.StatusTarefa;
-import lombok.Data;
 import org.apache.commons.lang.builder.EqualsBuilder;
 import org.apache.commons.lang.builder.HashCodeBuilder;
 import org.apache.commons.lang.builder.ToStringBuilder;
 import org.hibernate.validator.constraints.NotEmpty;
 
-import javax.persistence.Entity;
-import javax.persistence.EnumType;
-import javax.persistence.Enumerated;
-import javax.persistence.ManyToOne;
+import javax.persistence.*;
 
 /**
  * Created by simonini on 17/06/17.
  */
-@Data
 @Entity
 public class Tarefa extends PersistableEntity {
 
@@ -28,6 +23,7 @@ public class Tarefa extends PersistableEntity {
     private String descricao;
 
     @ManyToOne
+    @JoinColumn(name="estoria_id", referencedColumnName="id")
     private Estoria estoria;
 
     @Enumerated(EnumType.STRING)
@@ -39,6 +35,30 @@ public class Tarefa extends PersistableEntity {
 
     public void setNome(String nome) {
         this.nome = nome;
+    }
+
+    public String getDescricao() {
+        return descricao;
+    }
+
+    public void setDescricao(String descricao) {
+        this.descricao = descricao;
+    }
+
+    public Estoria getEstoria() {
+        return estoria;
+    }
+
+    public void setEstoria(Estoria estoria) {
+        this.estoria = estoria;
+    }
+
+    public StatusTarefa getStatusTarefa() {
+        return statusTarefa;
+    }
+
+    public void setStatusTarefa(StatusTarefa statusTarefa) {
+        this.statusTarefa = statusTarefa;
     }
 
     @Override

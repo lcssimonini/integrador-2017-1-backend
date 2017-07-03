@@ -13,7 +13,7 @@ import org.springframework.web.bind.annotation.RestController;
 @RequestMapping("/tarefas")
 public class TarefaController extends AbstractController<Tarefa>{
 
-    TarefaService service;
+    private TarefaService service;
 
     @Autowired
     public TarefaController(TarefaService service) {

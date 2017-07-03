@@ -1,6 +1,5 @@
 package br.com.integrador.backend.model;
 
-import lombok.Data;
 import org.apache.commons.lang.builder.EqualsBuilder;
 import org.apache.commons.lang.builder.HashCodeBuilder;
 import org.apache.commons.lang.builder.ToStringBuilder;
@@ -11,7 +10,6 @@ import javax.persistence.Entity;
 /**
  * Created by simonini on 14/06/17.
  */
-@Data
 @Entity
 public class TimeScrum extends PersistableEntity {
 
