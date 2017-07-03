@@ -1,5 +1,6 @@
 package br.com.integrador.backend.model;
 
+import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
 import org.apache.commons.lang.builder.EqualsBuilder;
 import org.apache.commons.lang.builder.HashCodeBuilder;
 import org.apache.commons.lang.builder.ToStringBuilder;
@@ -11,6 +12,7 @@ import javax.persistence.*;
  * Created by simonini on 17/06/17.
  */
 @Entity
+@JsonIgnoreProperties({"hibernateLazyInitializer", "handler"})
 public class Estoria extends PersistableEntity {
 
     private static final long serialVersionUID = -4304297196981863136L;

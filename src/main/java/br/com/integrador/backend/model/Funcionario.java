@@ -1,6 +1,7 @@
 package br.com.integrador.backend.model;
 
 import br.com.integrador.backend.model.enumerated.Cargo;
+import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
 import org.apache.commons.lang.builder.EqualsBuilder;
 import org.apache.commons.lang.builder.HashCodeBuilder;
 import org.apache.commons.lang.builder.ToStringBuilder;
@@ -15,6 +16,7 @@ import javax.persistence.ManyToOne;
  * Created by simonini on 14/06/17.
  */
 @Entity
+@JsonIgnoreProperties({"hibernateLazyInitializer", "handler"})
 public class Funcionario extends PersistableEntity {
 
     private static final long serialVersionUID = -543745288973303221L;

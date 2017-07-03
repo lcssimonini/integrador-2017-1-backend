@@ -1,17 +1,19 @@
 package br.com.integrador.backend.model;
 
+import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
 import org.apache.commons.lang.builder.ToStringBuilder;
 
 import javax.persistence.Entity;
-import javax.persistence.ManyToMany;
+import javax.persistence.ManyToOne;
 
 @Entity
+@JsonIgnoreProperties({"hibernateLazyInitializer", "handler"})
 public class Score extends PersistableEntity {
 
-    @ManyToMany
+    @ManyToOne
     private Sprint sprint;
 
-    @ManyToMany
+    @ManyToOne
     private Funcionario funcionario;
 
     private Integer count;

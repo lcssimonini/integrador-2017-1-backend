@@ -1,6 +1,7 @@
 package br.com.integrador.backend.model;
 
 import br.com.integrador.backend.model.enumerated.StatusTarefa;
+import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
 import org.apache.commons.lang.builder.EqualsBuilder;
 import org.apache.commons.lang.builder.HashCodeBuilder;
 import org.apache.commons.lang.builder.ToStringBuilder;
@@ -12,6 +13,7 @@ import javax.persistence.*;
  * Created by simonini on 17/06/17.
  */
 @Entity
+@JsonIgnoreProperties({"hibernateLazyInitializer", "handler"})
 public class Tarefa extends PersistableEntity {
 
     private static final long serialVersionUID = 1860581446842413481L;
