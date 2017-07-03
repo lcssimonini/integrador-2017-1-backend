@@ -1,20 +1,18 @@
 package br.com.integrador.backend.model;
 
-import lombok.Data;
 import org.apache.commons.lang.StringUtils;
 
 import javax.persistence.*;
-import java.sql.Timestamp;
+import java.io.Serializable;
 import java.util.Date;
 import java.util.List;
 
 /**
  * Created by simonini on 14/06/17.
  */
-@Data
 @Entity
 @Inheritance(strategy = InheritanceType.TABLE_PER_CLASS)
-public abstract class PersistableEntity {
+public abstract class PersistableEntity implements Serializable {
 
     @Id
     @GeneratedValue(strategy = GenerationType.TABLE)
@@ -45,6 +43,14 @@ public abstract class PersistableEntity {
 
     public boolean hasError() {
         return !this.errorList.isEmpty();
+    }
+
+    public Long getId() {
+        return id;
+    }
+
+    public void setId(Long id) {
+        this.id = id;
     }
 
     private static class EntityError {
