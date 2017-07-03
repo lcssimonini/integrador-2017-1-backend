@@ -11,6 +11,7 @@ import javax.persistence.Entity;
 import javax.persistence.EnumType;
 import javax.persistence.Enumerated;
 import javax.persistence.ManyToOne;
+import javax.validation.constraints.NotNull;
 
 /**
  * Created by simonini on 14/06/17.
@@ -21,12 +22,12 @@ public class Funcionario extends PersistableEntity {
 
     private static final long serialVersionUID = -543745288973303221L;
 
-    @NotEmpty(message = "Funcionário precisa ter um cargo")
+    @NotNull(message = "Funcionário precisa ter um cargo")
     @Enumerated(EnumType.STRING)
     private Cargo cargo;
 
     @ManyToOne
-    @NotEmpty(message = "Funcionário precisa pertencer a um time")
+    @NotNull(message = "Funcionário precisa pertencer a um time")
     private TimeScrum time;
 
     public Cargo getCargo() {

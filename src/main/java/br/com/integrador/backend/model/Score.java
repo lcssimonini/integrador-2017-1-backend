@@ -16,7 +16,7 @@ public class Score extends PersistableEntity {
     @ManyToOne
     private Funcionario funcionario;
 
-    private Integer count;
+    private Integer value;
 
     public Sprint getSprint() {
         return sprint;
@@ -34,12 +34,12 @@ public class Score extends PersistableEntity {
         this.funcionario = funcionario;
     }
 
-    public Integer getCount() {
-        return count;
+    public Integer getValue() {
+        return value;
     }
 
-    public void setCount(Integer count) {
-        this.count = count;
+    public void setValue(Integer value) {
+        this.value = value;
     }
 
     @Override
@@ -47,7 +47,7 @@ public class Score extends PersistableEntity {
         return new ToStringBuilder(this)
                 .append("sprint", sprint)
                 .append("funcionario", funcionario)
-                .append("count", count)
+                .append("value", value)
                 .toString();
     }
 }
