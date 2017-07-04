@@ -22,6 +22,12 @@ public class Funcionario extends PersistableEntity {
 
     private static final long serialVersionUID = -543745288973303221L;
 
+    @NotEmpty(message = "Login não pode ser vazio")
+    private String login;
+
+    @NotEmpty(message = "Senha não pode ser vazia")
+    private String senha;
+
     @NotNull(message = "Funcionário precisa ter um cargo")
     @Enumerated(EnumType.STRING)
     private Cargo cargo;
@@ -44,6 +50,22 @@ public class Funcionario extends PersistableEntity {
 
     public void setTime(TimeScrum time) {
         this.time = time;
+    }
+
+    public String getLogin() {
+        return login;
+    }
+
+    public void setLogin(String login) {
+        this.login = login;
+    }
+
+    public String getSenha() {
+        return senha;
+    }
+
+    public void setSenha(String senha) {
+        this.senha = senha;
     }
 
     @Override
