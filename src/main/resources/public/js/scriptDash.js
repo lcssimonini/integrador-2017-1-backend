@@ -1,3 +1,18 @@
+$( document ).ready(function() {
+  getLogado();
+});
+
+function getLogado() {
+  $.ajax({
+    type: "GET",
+    url: "/login",
+    success: function(data) {
+      console.log(data);
+      $("#usuarioLogado").html(data.login);
+    }
+  });
+}
+
 $('a[rel=popover]').popover({
   html: 'true',
   placement: 'top'

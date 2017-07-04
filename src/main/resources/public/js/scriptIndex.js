@@ -1,7 +1,4 @@
-
 $( document ).ready(function() {
-    console.log( "ready!" );
-
     $( "#loginBtn" ).click(function() {
       var usuario = $( "#inputEmail" ).val();
       var senha = $( "#inputPassword" ).val();
@@ -15,9 +12,9 @@ function login(usuario, senha) {
   $.ajax({
     type: "POST",
     url: "/login?usuario="+usuario+"&senha="+senha,
-    success: function() {
+    success: function(data) {
       console.log(data);
-      window.location.href = "localhost:3000/dash.html";
+      window.location.href = "/dash.html";
     }
   });
 }
