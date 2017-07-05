@@ -24,12 +24,20 @@ public class Tarefa extends PersistableEntity {
     @NotEmpty(message = "Tarefa precisa ter uma descrição")
     private String descricao;
 
-    @ManyToOne
-    @JoinColumn(name="estoria_id", referencedColumnName="id")
-    private Estoria estoria;
-
     @Enumerated(EnumType.STRING)
     private StatusTarefa statusTarefa;
+
+    @ManyToOne(fetch= FetchType.LAZY, cascade={ CascadeType.PERSIST, CascadeType.MERGE })
+    @JoinColumn(name="sprint_id", referencedColumnName="id")
+    private Sprint sprint;
+
+    public Sprint getSprint() {
+        return sprint;
+    }
+
+    public void setSprint(Sprint sprint) {
+        this.sprint = sprint;
+    }
 
     public String getNome() {
         return nome;
@@ -45,14 +53,6 @@ public class Tarefa extends PersistableEntity {
 
     public void setDescricao(String descricao) {
         this.descricao = descricao;
-    }
-
-    public Estoria getEstoria() {
-        return estoria;
-    }
-
-    public void setEstoria(Estoria estoria) {
-        this.estoria = estoria;
     }
 
     public StatusTarefa getStatusTarefa() {
@@ -73,7 +73,6 @@ public class Tarefa extends PersistableEntity {
 
         return new EqualsBuilder()
                 .append(getNome(), tarefa.getNome())
-                .append(estoria, tarefa.estoria)
                 .isEquals();
     }
 
@@ -81,7 +80,6 @@ public class Tarefa extends PersistableEntity {
     public int hashCode() {
         return new HashCodeBuilder(17, 37)
                 .append(getNome())
-                .append(estoria)
                 .toHashCode();
     }
 
@@ -90,7 +88,6 @@ public class Tarefa extends PersistableEntity {
         return new ToStringBuilder(this)
                 .append("nome", nome)
                 .append("descricao", descricao)
-                .append("estoria", estoria)
                 .append("statusTarefa", statusTarefa)
                 .toString();
     }

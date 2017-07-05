@@ -27,6 +27,7 @@ function getProjetos() {
 
       $('#listaProjetos a').click(function(){
         $('#projetoSelecionado').text($(this).text());
+        $('#idProjetoSelecionado').text($(this)[0].id);
         getSprints($(this)[0].id);
       });
 
@@ -52,6 +53,7 @@ function getSprints(projeto) {
       $('#listaSprints').append(options);
 
       $('#listaSprints a').click(function(){
+        $('#idSprintSelecionado').text($(this)[0].id);
         $('#sprintSelecionado').text($(this).text());
       });
     }
@@ -95,6 +97,22 @@ function toogle_disabled( bool ) {
 }
 
 function novoCard(){
-  var novocard = "<div draggable='true' ondragstart='drag(event)' id='drag1'><label for=''>Titulo</label><input type='image' src='img/pencil-edit-button.svg'  width='15px' height='15px' onclick='toogle_disabled( false )'><input type='image' src='img/save-file-option.svg'  width='15px' height='15px' onclick='toogle_disabled( true )'><input type='text' class='form-control' placeholder='Descreva o Titulo'><label for=''>Descrição</label><textarea type='text' class='form-control' rows='3' cols='30' id='plus' name='teste' placeholder='Descreva aqui a tarefa'></textarea></div>";
-        document.getElementById("div1").innerHTML = novocard;
+  // var novocard = "<div draggable='true' ondragstart='drag(event)' id='drag1'><label for=''>Titulo</label><input type='image' src='img/pencil-edit-button.svg'  width='15px' height='15px' onclick='toogle_disabled( false )'><input type='image' src='img/save-file-option.svg'  width='15px' height='15px' onclick='toogle_disabled( true )'><input type='text' class='form-control' placeholder='Descreva o Titulo'><label for=''>Descrição</label><textarea type='text' class='form-control' rows='3' cols='30' id='plus' name='teste' placeholder='Descreva aqui a tarefa'></textarea></div>";
+  //       document.getElementById("div1").innerHTML = novocard;
+    var tarefa = {
+      nome: $( "#txtTitulo" ).val(),
+      descricao: $( "#txtDescription" ).val(),
+      sprint: $('#idSprintSelecionado').text(),
+      status_tarefa: "PENDENTE"
+    };
+
+    $.ajax({
+      type: "POST",
+      url: "/tarefas",
+      data: tarefa,
+      success: function(data) {
+        console.log(data);
+        window.location.href = "/dash.html";
+      }
+    });
 };
