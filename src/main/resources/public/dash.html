@@ -58,35 +58,28 @@
       <div class="col-md-12">
       <div class="col-md-1"></div>
   		<div class="col-md-3 colunas">
-  			<h4>
-  				A fazer
-  			</h4>
+  			<h4> A fazer </h4>
 
-        <div id="div1" ondrop="drop(event)" ondragover="allowDrop(event)">
+        <div id="divPendentes" ondrop="drop(event)" ondragover="allowDrop(event)">
 
-          <div draggable="true" ondragstart="drag(event)" id="drag1">
+          <!-- <div draggable="true" ondragstart="drag(event)" id="drag1">
             <label for="">Titulo</label>
-            <input type="image" src="img/pencil-edit-button.svg"  width="15px" height="15px" onclick="toogle_disabled( false )">
-            <input type="image" src="img/save-file-option.svg"  width="15px" height="15px" onclick="toogle_disabled( true )">
             <input type="text" class="form-control" placeholder="Descreva o Titulo">
             <label for="">Descrição</label>
             <textarea type="text" class="form-control" rows="3" cols="30" id="plus" name="teste" placeholder="Descreva aqui a tarefa"></textarea>
-          </div>
+          </div> -->
 
         </div>
 
   		</div>
   		<div class="col-md-3 colunas">
-  			<h4>
-  				Em progresso
-  			</h4>
-        <div id="div1" ondrop="drop(event)" ondragover="allowDrop(event)"></div>
+  			<h4> Em progresso </h4>
+        <div id="divProgresso" ondrop="drop(event)" ondragover="allowDrop(event)"></div>
   		</div>
-  		<div class="col-md-3 colunas">
-  			<h4>
-  				Finalizadas
-  			</h4>
-        <div id="div1" ondrop="drop(event)" ondragover="allowDrop(event)"></div>
+
+      <div class="col-md-3 colunas">
+  			<h4> Finalizadas </h4>
+        <div id="divFinalizadas" ondrop="drop(event)" ondragover="allowDrop(event)"></div>
   		</div>
       <!--
       <div class="col-md-1">

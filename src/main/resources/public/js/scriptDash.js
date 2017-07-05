@@ -55,7 +55,38 @@ function getSprints(projeto) {
       $('#listaSprints a').click(function(){
         $('#idSprintSelecionado').text($(this)[0].id);
         $('#sprintSelecionado').text($(this).text());
+        getTarefas();
       });
+    }
+  });
+}
+
+function getTarefas() {
+  var sprintId =  $('#idSprintSelecionado').text();
+
+  $('#divPendentes').empty();
+
+  $.ajax({
+    type: "GET",
+    url: "/tarefas/tarefasSprint?status='PENDENTE'&sprint_id="+sprintId,
+    success: function(data) {
+      var options = "";
+
+      for(i in data) {
+        var id = data[i].id;
+        var nome = data[i].nome;
+        var descricao = data[i].descricao;
+
+         options += "<div draggable='true' ondragstart='drag(event)' id='"+id+"'> \
+                        <label for="">Titulo</label> \
+                        <input type='text' class='form-control' placeholder='Descreva o Titulo' value='"+nome+"'> \
+                        <label for="">Descrição</label> \
+                        <textarea type='text' class='form-control' rows='3' cols='30' id='plus' \
+                        name='teste' placeholder='Descreva aqui a tarefa' value='"+descricao+"'></textarea> \
+                      </div>";
+      }
+
+      $('#divPendentes').append(options);
     }
   });
 }
@@ -97,13 +128,10 @@ function toogle_disabled( bool ) {
 }
 
 function novoCard(){
-  // var novocard = "<div draggable='true' ondragstart='drag(event)' id='drag1'><label for=''>Titulo</label><input type='image' src='img/pencil-edit-button.svg'  width='15px' height='15px' onclick='toogle_disabled( false )'><input type='image' src='img/save-file-option.svg'  width='15px' height='15px' onclick='toogle_disabled( true )'><input type='text' class='form-control' placeholder='Descreva o Titulo'><label for=''>Descrição</label><textarea type='text' class='form-control' rows='3' cols='30' id='plus' name='teste' placeholder='Descreva aqui a tarefa'></textarea></div>";
-  //       document.getElementById("div1").innerHTML = novocard;
     var tarefa = {
       nome: $( "#txtTitulo" ).val(),
       descricao: $( "#txtDescription" ).val(),
-      sprint: $('#idSprintSelecionado').text(),
-      status_tarefa: "PENDENTE"
+      sprint: $('#idSprintSelecionado').text()
     };
 
     $.ajax({
