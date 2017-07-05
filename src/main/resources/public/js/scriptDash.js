@@ -1,5 +1,7 @@
 $( document ).ready(function() {
   getLogado();
+  getProjetos();
+  getSprints();
 });
 
 function getLogado() {
@@ -7,8 +9,51 @@ function getLogado() {
     type: "GET",
     url: "/login",
     success: function(data) {
-      console.log(data);
       $("#usuarioLogado").html(data.login);
+    }
+  });
+}
+
+function getProjetos() {
+  $.ajax({
+    type: "GET",
+    url: "/projetos",
+    success: function(data) {
+      var options = "";
+      for(i in data) {
+         options += "<li><a href='#' id='"+data[i].id+"''>"+data[i].nome+"</a></li>";
+      }
+      $('#listaProjetos').append(options);
+
+      $('#listaProjetos a').click(function(){
+        $('#projetoSelecionado').text($(this).text());
+        getSprints($(this)[0].id);
+      });
+
+    }
+  });
+}
+
+function getSprints(projeto) {
+  $('#listaSprints').empty();
+  var sprintsUrl = "/sprints"
+  if(projeto) {
+    sprintsUrl = "/sprints/byProjeto?projeto_id="+projeto
+  }
+
+  $.ajax({
+    type: "GET",
+    url: sprintsUrl,
+    success: function(data) {
+      var options = "";
+      for(i in data) {
+         options += "<li><a href='#' id='"+data[i].id+"''>"+data[i].nome+"</a></li>";
+      }
+      $('#listaSprints').append(options);
+
+      $('#listaSprints a').click(function(){
+        $('#sprintSelecionado').text($(this).text());
+      });
     }
   });
 }
