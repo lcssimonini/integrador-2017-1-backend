@@ -68,7 +68,7 @@ function getTarefas() {
 
   $.ajax({
     type: "GET",
-    url: "/tarefas/tarefasSprint?status='PENDENTE'&sprint_id="+sprintId,
+    url: "/tarefas/tarefasSprint?status=PENDENTE&sprint_id="+sprintId,
     success: function(data) {
       var options = "";
 
@@ -77,15 +77,13 @@ function getTarefas() {
         var nome = data[i].nome;
         var descricao = data[i].descricao;
 
-         options += "<div draggable='true' ondragstart='drag(event)' id='"+id+"'> \
-                        <label for="">Titulo</label> \
-                        <input type='text' class='form-control' placeholder='Descreva o Titulo' value='"+nome+"'> \
-                        <label for="">Descrição</label> \
-                        <textarea type='text' class='form-control' rows='3' cols='30' id='plus' \
-                        name='teste' placeholder='Descreva aqui a tarefa' value='"+descricao+"'></textarea> \
+         options += "<div class='tarefa' draggable='true' ondragstart='drag(event)' id='"+id+"'> \
+                        <label for=''>Titulo</label> \
+                        <input type='text' class='form-control' placeholder='Titulo' value='"+nome+"'> \
+                        <label for=''>Descrição</label> \
+                        <input type='text' class='form-control' placeholder='Descricao' value='"+descricao+"'>\
                       </div>";
       }
-
       $('#divPendentes').append(options);
     }
   });
@@ -109,22 +107,6 @@ function drop(ev) {
     var data = ev.dataTransfer.getData("text");
     ev.target.appendChild(document.getElementById(data));
     console.log('tarefa mudou de status');
-}
-
-
-function toogle_disabled( bool ) {
-	var input = document.getElementsByTagName('input');
-	var textarea = document.getElementsByTagName('textarea');
-	for( var i=0; i<=(input.length-1); i++ )
-	{
-		if( input[i].type!='image' )
-			input[i].disabled = bool;
-	}
-	for( var i=0; i<=(textarea.length-1); i++ )
-	{
-		textarea[i].disabled = bool;
-	}
-  console.log('salvando');
 }
 
 function novoCard(){

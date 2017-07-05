@@ -103,7 +103,7 @@ p{
     padding: 10px;
 }
 
-#drag1 {
+.tarefa {
   margin: 0px;
   padding: 10px;
   border: 1px solid #1C1C1C;
@@ -111,7 +111,7 @@ p{
   background-color: #1C1C1C;
   text-align: left;
 }
-#drag1:hover {
+.tarefa:hover {
   box-shadow:0 4px 10px 0 rgba(0,0,0,0.2),0 4px 20px 0 rgba(0,0,0,0.19)
 }
 
